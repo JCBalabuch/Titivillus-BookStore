@@ -1,0 +1,28 @@
+.rightHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .rightHeader > button {
+    height: 35px;
+    width: 60px;
+    background-color: transparent;
+    border-color: var(--ttv-color-secondary);
+    border-radius: 50px;
+    color: inherit;
+    font-weight: 800;
+    /* border: none; */
+    cursor: pointer;
+  }
+  
+  .rightHeader > button > img {
+    width: 33px;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .rightHeader {
+      display: none;
+    }
+  }

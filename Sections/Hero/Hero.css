@@ -1,0 +1,45 @@
+.hero {
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin: 50px;
+  text-align: justify;
+}
+
+.imgHero {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgHero > img {
+  height: 200px;
+  border-radius: 200px;
+  object-fit: contain;
+}
+
+.contentHero {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contentHero > h1 > span,
+.contentHero > h3 > span {
+  color: var(--ttv-color-primary);
+  font-style: italic;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 800px) {
+  .hero {
+      display: flex;
+      flex-direction: column;
+  }
+}
+

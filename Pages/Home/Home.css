@@ -1,0 +1,16 @@
+#homeSection {
+    display: flex;
+    flex-direction: column;
+}
+
+#mainTemplate {
+    display: flex;
+    height: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    #mainTemplate {
+        display: flex;
+        flex-direction: column;
+    }
+}

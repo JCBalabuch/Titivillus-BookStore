@@ -1,0 +1,25 @@
+.leftHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.leftHeader > h2 {
+    color: inherit;
+    font-style: italic;
+  }
+
+.leftHeader > h2 > span {
+    color: var(--ttv-color-primary);
+}
+
+.leftHeader > img {
+  width: 40px;
+  border-radius: 20px;
+}
+
+.dark-mode {
+  color: var(--ttv-color-dark);
+  background-color: var(--ttv-color-light);
+}

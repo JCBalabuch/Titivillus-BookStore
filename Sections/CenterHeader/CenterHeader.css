@@ -1,0 +1,23 @@
+.centerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .centerHeader > ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    gap: 20px;
+  }
+  
+  .centerHeader > ul > li > a {
+    color: inherit;
+  }
+  
+  .centerHeader > ul > li > a:hover {
+    color: inherit;
+    text-decoration-line: underline;
+  }
+

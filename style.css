@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Ysabeau", sans-serif;
+}
+
+:root {
+  --ttv-color-dark: #3c3834;
+  --ttv-color-primary: #8b8074;
+  --ttv-color-secondary: #b7a995;
+  --ttv-color-tertiary: #c7bca9;
+  --ttv-color-light: #d5c8b8;
+}
+
+body {
+  background-color: var(--ttv-color-dark);
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  color: var(--ttv-color-light);
+  width: 100%;
+}
+
+.dark-mode {
+  color: var(--ttv-color-dark);
+  background-color: var(--ttv-color-light);
+}
