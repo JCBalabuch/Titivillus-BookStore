@@ -21,6 +21,7 @@ const Home = () => {
   document.querySelector("main").innerHTML = templateHome();
   printFilters();
   templateGalleryBooks(DATABOOKS);
+
 };
 
 

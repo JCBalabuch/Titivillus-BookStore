@@ -39,6 +39,7 @@ const searchByEditorial = (e) => {
   console.log(FILTEREDBOOKS);
 };
 
+console.log(`fuera del filtro` + FILTEREDBOOKS);
 
 const editorialFilter = () => {
   const filterSection = document.querySelector("#filters");
@@ -170,23 +171,6 @@ const priceFilter = () => {
 
   filterSection.appendChild(divPrice$$);
 };
-
-// const searchByPrice = (e) => {
-//   const filterPrice = DATABOOKS.filter((book) => book.price <= e.target.value);
-
-//   if (e.target.value === "") {
-//     templateGalleryBooks(DATABOOKS);
-//   } else {
-//     templateGalleryBooks(filterPrice);
-//   }
-//   templateGalleryBooks(filterPrice)
-
-//   console.log(filterPrice);
-// };
-
-
-
-console.log(FILTEREDBOOKS);
 
 const filterCleaner = () => {
   const cleanFilters = document.querySelector("#clearFilters");
