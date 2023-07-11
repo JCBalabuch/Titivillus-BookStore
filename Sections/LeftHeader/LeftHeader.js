@@ -1,4 +1,4 @@
-import "./leftHeader.css";
+import "./LeftHeader.css";
 
 const leftHeader = () => {
   return `
