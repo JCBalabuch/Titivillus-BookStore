@@ -1,178 +1,153 @@
-import { DATABOOKS } from "../../Data/Data";
-import { templateGalleryBooks } from "../GalleryCards/GalleryCards";
 import "./Filters.css";
+import { DATABOOKS } from "../../Data/Data";
+import {
+  printGallery,
+  templateGalleryBooks,
+} from "../GalleryCards/GalleryCards";
 
 let FILTEREDBOOKS = [];
 
-const templateFilters = () => {
-  return `
-  <div id="filters-section" class="filters-section">
-    <div id="filters" class="filters"><div>
-    <button id="clearFilters" class="clearFilters">Limpiar Filtros</button>
-  </div>
-  `;
-};
-
-const searchByEditorial = (e) => {
-  let filterEditorial = [];
-
-  if (FILTEREDBOOKS.length) {
-    filterEditorial = FILTEREDBOOKS.filter(
-      (book) => book.editorial === e.target.value
-    );
+export const searchByEditorial = (e) => {
+  if (!FILTEREDBOOKS.some((book) => book.editorial === e.target.value)) {
+    FILTEREDBOOKS = [
+      ...FILTEREDBOOKS,
+      ...DATABOOKS.filter((book) => book.editorial === e.target.value),
+    ];
+    // printGallery(FILTEREDBOOKS);
+    console.log(FILTEREDBOOKS);
   } else {
-    filterEditorial = DATABOOKS.filter(
-      (book) => book.editorial === e.target.value
+    FILTEREDBOOKS = FILTEREDBOOKS.filter(
+      (book) => book.editorial !== e.target.value
     );
+    // printGallery(FILTEREDBOOKS);
+    console.log(FILTEREDBOOKS);
   }
-
-  if (filterEditorial === "") {
-    return `
-    <h2>No se ha encontrado el libro que buscas<h2>
-    `;
-  } else {
-    FILTEREDBOOKS = filterEditorial;
-  }
-
-  templateGalleryBooks(FILTEREDBOOKS);
 
   console.log(FILTEREDBOOKS);
+
+  // let filterEditorial = [];
+
+  // if (FILTEREDBOOKS.length) {
+  //   filterEditorial = FILTEREDBOOKS.filter(
+  //     (book) => book.editorial === e.target.value
+  //   );
+  // } else {
+  //   filterEditorial = DATABOOKS.filter(
+  //     (book) => book.editorial === e.target.value
+  //   );
+  // }
+
+  // FILTEREDBOOKS = filterEditorial;
+
+  // console.log(FILTEREDBOOKS);
+
+  // if (filterEditorial === "") {
+  //   return `
+  //   <h2>No se ha encontrado el libro que buscas<h2>
+  //   `;
+  // } else {
+  //   templateGalleryBooks(FILTEREDBOOKS)
+  // }
+
+  // templateGalleryBooks(FILTEREDBOOKS);
 };
 
 console.log(`fuera del filtro` + FILTEREDBOOKS);
 
-const editorialFilter = () => {
-  const filterSection = document.querySelector("#filters");
-  const editorials = [];
-
-  for (const book of DATABOOKS) {
-    if (!editorials.includes(book.editorial)) {
-      editorials.push(book.editorial);
-    }
-  }
-
-  const divEditorial$$ = document.createElement("div");
-  divEditorial$$.id = "searchByEditorial";
-  divEditorial$$.classList = "searchByEditorial";
-
-  const tituloEditorial$$ = document.createElement("h4");
-  tituloEditorial$$.textContent = "Filtrar por Editoriales";
-  divEditorial$$.appendChild(tituloEditorial$$);
-
-  const editorial$$ = document.createElement("select");
-  editorial$$.id = "editorialSelect";
-  divEditorial$$.appendChild(editorial$$);
-
-  for (const editorial of editorials) {
-    const edOptions$$ = document.createElement("option");
-    edOptions$$.id = "editorialOption";
-    edOptions$$.text = editorial;
-
-    editorial$$.append(edOptions$$);
-  }
-  divEditorial$$.append(editorial$$);
-
-  editorial$$.addEventListener("change", searchByEditorial);
-
-  filterSection.appendChild(divEditorial$$);
-};
-
-const searchByAuthorTitle = (e) => {
-  let filterAuthorTitle = [];
-
-  if (FILTEREDBOOKS.length) {
-    filterAuthorTitle = FILTEREDBOOKS.filter(
+export const searchByAuthorTitle = (e) => {
+  if (
+    !FILTEREDBOOKS.some(
+      (book) =>
+        book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        book.author.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+  ) {
+    FILTEREDBOOKS = [
+      ...FILTEREDBOOKS,
+      ...DATABOOKS.filter(
+        (book) =>
+          book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          book.author.toLowerCase().includes(e.target.value.toLowerCase())
+      ),
+    ];
+    // printGallery(FILTEREDBOOKS);
+    console.log(FILTEREDBOOKS);
+  } else {
+    FILTEREDBOOKS = FILTEREDBOOKS.filter(
       (book) =>
         book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
         book.author.toLowerCase().includes(e.target.value.toLowerCase())
     );
-  } else {
-    filterAuthorTitle = DATABOOKS.filter(
-      (book) =>
-        book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        book.author.toLowerCase().includes(e.target.value.toLowerCase())
-    );
+    // printGallery(FILTEREDBOOKS);
+    console.log(FILTEREDBOOKS);
   }
-
-  if (filterAuthorTitle === "") {
-    return `
-    <h2>No se ha encontrado el libro que buscas<h2>
-    `;
-  } else {
-    FILTEREDBOOKS = filterAuthorTitle;
-  }
-
-  templateGalleryBooks(FILTEREDBOOKS);
 
   console.log(FILTEREDBOOKS);
+
+  // let filterAuthorTitle = [];
+
+  // if (FILTEREDBOOKS.length) {
+  //   filterAuthorTitle = FILTEREDBOOKS.filter(
+  //     (book) =>
+  //       book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+  //       book.author.toLowerCase().includes(e.target.value.toLowerCase())
+  //   );
+  // } else {
+  //   filterAuthorTitle = DATABOOKS.filter(
+  //     (book) =>
+  //       book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+  //       book.author.toLowerCase().includes(e.target.value.toLowerCase())
+  //   );
+  // }
+
+  // printGallery(FILTEREDBOOKS);
+
+  // console.log(FILTEREDBOOKS);
 };
 
-const authorOrTitleFilter = () => {
-  const filterSection = document.querySelector("#filters");
-
-  const divAuthorTitleFilter$$ = document.createElement("div");
-  divAuthorTitleFilter$$.id = "authorTitleFilter";
-  divAuthorTitleFilter$$.classList = "authorTitleFilter";
-
-  const byAutorTitle$$ = document.createElement("h4");
-  byAutorTitle$$.textContent = "Filtrar por Autor o Título";
-  divAuthorTitleFilter$$.appendChild(byAutorTitle$$);
-
-  const filterByAutorTitle$$ = document.createElement("input");
-  filterByAutorTitle$$.type = "text";
-  filterByAutorTitle$$.id = "searchByTitleOrAuthor";
-  filterByAutorTitle$$.classList = "searchByTitleOrAuthor";
-  divAuthorTitleFilter$$.appendChild(filterByAutorTitle$$);
-
-  filterByAutorTitle$$.addEventListener("input", searchByAuthorTitle);
-
-  filterSection.appendChild(divAuthorTitleFilter$$);
-};
-
-const searchByPrice = (e) => {
-  let filterPrice = [];
-
-  if (FILTEREDBOOKS.length) {
-    filterPrice = FILTEREDBOOKS.filter((book) => book.price <= e.target.value);
-  } else {
-    filterPrice = DATABOOKS.filter((book) => book.price <= e.target.value);
+export const searchByPrice = (e) => {
+  if (!FILTEREDBOOKS.some((book) => book.price <= e.target.value)) {
+    FILTEREDBOOKS = [
+      ...FILTEREDBOOKS,
+      ...DATABOOKS.filter((book) => book.price <= e.target.value),
+    ];
+    // printGallery(FILTEREDBOOKS);
+    console.log(FILTEREDBOOKS);
   }
+  // else {
+  //   FILTEREDBOOKS = FILTEREDBOOKS.filter(
+  //     (book) => book.price <= e.target.value
+  //   );
+  //   printGallery(FILTEREDBOOKS);
+  //   console.log(FILTEREDBOOKS)
+  // }
 
-  if (filterPrice === "") {
-    return `
-    <h2>No se ha encontrado el libro que buscas<h2>
-    `;
-  } else {
-    FILTEREDBOOKS = filterPrice;
-  }
+  // printGallery(FILTEREDBOOKS)
+  // console.log(FILTEREDBOOKS);
 
-  templateGalleryBooks(FILTEREDBOOKS);
-  console.log(FILTEREDBOOKS);
+  // let filterPrice = [];
+
+  // if (FILTEREDBOOKS.length) {
+  //   filterPrice = FILTEREDBOOKS.filter((book) => book.price <= e.target.value);
+  // } else {
+  //   filterPrice = DATABOOKS.filter((book) => book.price <= e.target.value);
+  // }
+
+  // printGallery(FILTEREDBOOKS);
+  // console.log(FILTEREDBOOKS);
 };
 
-const priceFilter = () => {
-  const filterSection = document.querySelector("#filters");
+// export const filterBooks = () => {
+//   const filter = document.querySelector("#searchAll");
+//   filter.addEventListener("click", () => {
+//     searchByEditorial();
+//     searchByAuthorTitle();
+//     searchByPrice();
+//     printGallery(FILTEREDBOOKS);
+//   });
+// };
 
-  const divPrice$$ = document.createElement("div");
-  divPrice$$.id = "priceFilter";
-  divPrice$$.classList = "priceFilter";
-
-  const byPriceTitle$$ = document.createElement("h4");
-  byPriceTitle$$.textContent = "Filtrar por Precio";
-  divPrice$$.appendChild(byPriceTitle$$);
-
-  const filterByPrice$$ = document.createElement("input");
-  filterByPrice$$.type = "number";
-  filterByPrice$$.id = "searchByPrice";
-  filterByPrice$$.classList = "searchByPrice";
-  divPrice$$.appendChild(filterByPrice$$);
-
-  filterByPrice$$.addEventListener("input", searchByPrice);
-
-  filterSection.appendChild(divPrice$$);
-};
-
-const filterCleaner = () => {
+export const filterCleaner = () => {
   const cleanFilters = document.querySelector("#clearFilters");
   cleanFilters.addEventListener("click", () => {
     const editorial$$ = document.getElementById("editorialSelect");
@@ -187,13 +162,5 @@ const filterCleaner = () => {
   });
 
   FILTEREDBOOKS = [];
-  templateGalleryBooks(DATABOOKS);
-};
-
-export const printFilters = () => {
-  document.querySelector("#mainFilters").innerHTML += templateFilters();
-  editorialFilter();
-  authorOrTitleFilter();
-  priceFilter();
-  filterCleaner();
+  printGallery(DATABOOKS);
 };

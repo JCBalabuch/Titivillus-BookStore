@@ -5,7 +5,7 @@ import { invitationBookClub } from "../../Data/Data";
 const TemplateBookClub = () => {
     return `
         <div class = "bookClub">
-            <img src="./assets/TitivillusBI.jpg" alt="Logo Titivillus BookStore">
+            <img src="TitivillusBI.jpg" alt="Logo Titivillus BookStore">
             <h2>Book Club</h2>
             <p>${invitationBookClub}</p>
             <button>📚 Únete 📚</button>

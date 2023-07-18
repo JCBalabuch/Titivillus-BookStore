@@ -44,3 +44,10 @@
     width: auto;
     height: 180px;
 }  
+
+.notFound {
+    text-align: center;
+    font-style: italic;
+    font-size: 3rem;
+    padding: 3rem;
+}

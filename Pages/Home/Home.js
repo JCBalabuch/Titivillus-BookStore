@@ -1,8 +1,9 @@
 import "./Home.css";
 import Hero from "../../Sections/Hero/Hero";
-import { templateGalleryBooks } from "../../Sections/GalleryCards/GalleryCards";
-import { printFilters } from "../../Sections/Filters/Filters";
 import { DATABOOKS } from "../../Data/Data";
+import { printFilters } from "../../Sections/TemplateFilters/TemplateFilters";
+import { printGallery } from "../../Sections/GalleryCards/GalleryCards";
+
 
 
 const templateHome = () => {
@@ -20,8 +21,7 @@ const templateHome = () => {
 const Home = () => {
   document.querySelector("main").innerHTML = templateHome();
   printFilters();
-  templateGalleryBooks(DATABOOKS);
-
+  printGallery(DATABOOKS);
 };
 
 

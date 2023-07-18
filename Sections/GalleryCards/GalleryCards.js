@@ -1,7 +1,21 @@
 import "./GalleryCards.css";
 import { DATABOOKS } from "../../Data/Data";
 
-export const templateGalleryBooks = (books) => {
+export const printGallery = (books) => {
+  const galleryBooks = document.querySelector("#mainGallery");
+  galleryBooks.innerHTML = "";
+
+  if (books.length === 0) {
+    const notFound = document.createElement("h2");
+    notFound.textContent = "No se ha encontrado el libro que buscas";
+    notFound.className = "notFound";
+    galleryBooks.append(notFound);
+  } else {
+    templateGalleryBooks()
+  }
+};
+
+export const templateGalleryBooks = () => {
   const galleryBooks = document.querySelector("#mainGallery");
 
   galleryBooks.innerHTML = "";
@@ -50,7 +64,6 @@ export const templateGalleryBooks = (books) => {
 
   gallery.append(ulGallery);
 
-  document.body.append(gallery);
+  // document.body.append(gallery);
   galleryBooks.append(gallery);
-
 };
