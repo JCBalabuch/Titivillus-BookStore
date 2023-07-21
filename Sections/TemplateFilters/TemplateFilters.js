@@ -1,6 +1,6 @@
 import "./TemplateFilters.css";
 import { DATABOOKS } from "../../Data/Data";
-import { filterCleaner, searchByAuthorTitle, searchByEditorial, searchByPrice } from "../Filters/Filters";
+import { searchByAuthorTitle, searchByEditorial, searchByPrice } from "../Filters/Filters";
 
 
 const templateFilters = () => {
@@ -94,10 +94,10 @@ const priceFilter = () => {
 };
 
 export const printFilters = () => {
-    document.querySelector("#mainFilters").innerHTML += templateFilters();
+    document.querySelector("#mainFilters").innerHTML = templateFilters();
     editorialFilter();
     authorOrTitleFilter();
     priceFilter();
     // filterBooks();
-    filterCleaner();
+    // filterCleaner();
   };

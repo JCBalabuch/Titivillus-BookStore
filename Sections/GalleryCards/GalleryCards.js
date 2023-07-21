@@ -1,19 +1,21 @@
 import "./GalleryCards.css";
 import { DATABOOKS } from "../../Data/Data";
 
-export const printGallery = (books) => {
-  const galleryBooks = document.querySelector("#mainGallery");
-  galleryBooks.innerHTML = "";
+// const galleryBooks = document.querySelector("#mainGallery")
 
-  if (books.length === 0) {
-    const notFound = document.createElement("h2");
-    notFound.textContent = "No se ha encontrado el libro que buscas";
-    notFound.className = "notFound";
-    galleryBooks.append(notFound);
-  } else {
-    templateGalleryBooks()
-  }
-};
+// export const printGallery = (books) => {
+//   const galleryBooks = document.querySelector("#mainGallery");
+//   galleryBooks.innerHTML = "";
+
+//   if (books.length === 0) {
+//     const notFound = document.createElement("h2");
+//     notFound.textContent = "No se ha encontrado el libro que buscas";
+//     notFound.className = "notFound";
+//     galleryBooks.append(notFound);
+//   } else {
+//     templateGalleryBooks();
+//   }
+// };
 
 export const templateGalleryBooks = () => {
   const galleryBooks = document.querySelector("#mainGallery");
