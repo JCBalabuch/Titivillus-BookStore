@@ -6,18 +6,19 @@ export let FILTEREDBOOKS = [];
 
 console.log(FILTEREDBOOKS);
 
-const printBooks = (books) => {
+export const printBooks = (books) => {
   const galleryBooks = document.querySelector("#mainGallery");
   galleryBooks.innerHTML = "";
 
-  if (FILTEREDBOOKS.length === 0) {
+  if (books.length === 0) {
     const notFound = document.createElement("h2");
     notFound.textContent = "No se ha encontrado el libro que buscas";
     notFound.className = "notFound";
     galleryBooks.append(notFound);
+
+    templateGalleryBooks(DATABOOKS)
   } else {
-    const filtered = templateGalleryBooks();
-    galleryBooks.append(filtered);
+    templateGalleryBooks(books)
 
     console.log(FILTEREDBOOKS);
   }
@@ -85,36 +86,27 @@ export const searchByPrice = (event) => {
   printBooks(FILTEREDBOOKS);
 };
 
-// export const filterBooks = () => {
-//   const filter = document.querySelector("#searchAll");
-//   filter.addEventListener("click", () => {
-//     searchByEditorial();
-//     searchByAuthorTitle();
-//     searchByPrice();
-//     printBooks(FILTEREDBOOKS);
-//   });
-// };
+export const filterCleaner = () => {
+  const cleanFilters = document.querySelector("#clearFilters");
+  cleanFilters.addEventListener("click", () => {
+    const editorial$$ = document.getElementById("editorialSelect");
+    const filterByAutorTitle$$ = document.getElementById(
+      "searchByTitleOrAuthor"
+    );
+    const filterByPrice$$ = document.getElementById("searchByPrice");
 
-// export const filterCleaner = () => {
-//   const cleanFilters = document.querySelector("#clearFilters");
-//   cleanFilters.addEventListener("click", () => {
-//     const editorial$$ = document.getElementById("editorialSelect");
-//     const filterByAutorTitle$$ = document.getElementById(
-//       "searchByTitleOrAuthor"
-//     );
-//     const filterByPrice$$ = document.getElementById("searchByPrice");
+    editorial$$.value = "";
+    filterByAutorTitle$$.value = "";
+    filterByPrice$$.value = "";
 
-//     editorial$$.value = "";
-//     filterByAutorTitle$$.value = "";
-//     filterByPrice$$.value = "";
+    FILTEREDBOOKS = [];
+    printBooks(DATABOOKS);
 
-//     FILTEREDBOOKS = [];
-//     console.log(cleanFilters);
-//     console.log(editorial$$.value);
-//     console.log(filterByAutorTitle$$.value);
-//     console.log(filterByPrice$$.value);
-//     console.log(FILTEREDBOOKS);
+    console.log(cleanFilters);
+    console.log(editorial$$.value);
+    console.log(filterByAutorTitle$$.value);
+    console.log(filterByPrice$$.value);
+    console.log(FILTEREDBOOKS);
 
-//   });
-//   templateGalleryBooks(DATABOOKS);
-// };
+  });
+};

@@ -1,13 +1,12 @@
 import "./TemplateFilters.css";
 import { DATABOOKS } from "../../Data/Data";
-import { searchByAuthorTitle, searchByEditorial, searchByPrice } from "../Filters/Filters";
+import { filterCleaner, searchByAuthorTitle, searchByEditorial, searchByPrice } from "../Filters/Filters";
 
 
 const templateFilters = () => {
   return `
     <div id="filters-section" class="filters-section">
       <div id="filters" class="filters"></div>
-      <button id="searchAll" class="searchAll">Buscar</button>
       <button id="clearFilters" class="clearFilters">Limpiar Filtros</button>
     </div>
     `;
@@ -98,6 +97,5 @@ export const printFilters = () => {
     editorialFilter();
     authorOrTitleFilter();
     priceFilter();
-    // filterBooks();
-    // filterCleaner();
+    filterCleaner();
   };
